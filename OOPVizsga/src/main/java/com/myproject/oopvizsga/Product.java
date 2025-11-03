@@ -4,31 +4,90 @@
  */
 package com.myproject.oopvizsga;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author istsz
  */
 public class Product extends BaseEntity implements Identifiable, Billable {
 
+    private String type;              // PHYSICAL, DIGITAL, SERVICE
+    private String sku;
     private String name;
+    private int qty;
     private double price;
+
+    private ArrayList<Discount> discounts; // optional
+    private Dimensions dimensions;         // for PHYSICAL
+    private Weight weight;                 // for PHYSICAL
+    private License license;               // for DIGITAL
+    private ServiceDetails service;        // for SERVICE
+
     private static int counter = 0;
 
-    public Product(String id, String name, double price) {
-        super(id);
+    public Product(String type, String sku, String name, int qty, double price) {
+        super("P-" + (++counter));
+        this.type = type;
+        this.sku = sku;
         this.name = name;
+        this.qty = qty;
         this.price = price;
-        counter++;
-
+        this.discounts = new ArrayList<>();
+        this.dimensions = null;
+        this.weight = null;
+        this.license = null;
+        this.service = null;
     }
 
-    public Product(String id, String name) {
-        this(id, name, 0.0);
+    // Add a discount
+    public void addDiscount(Discount discount) {
+        discounts.add(discount);
     }
 
+    // Set optional fields
+    public void setDimensions(Dimensions dimensions) {
+        this.dimensions = dimensions;
+    }
+
+    public void setWeight(Weight weight) {
+        this.weight = weight;
+    }
+
+    public void setLicense(License license) {
+        this.license = license;
+    }
+
+    public void setService(ServiceDetails service) {
+        this.service = service;
+    }
+
+    // Business key for equals
     @Override
     public String businessKey() {
-        return id;
+        return sku;
+    }
+
+    // To string prints type-specific info
+    @Override
+    public String toString() {
+        String result = type + " " + name + " x" + qty + " [" + sku + "] $" + price;
+        if (!discounts.isEmpty()) {
+            result += " Discounts: " + discounts;
+        }
+        if (dimensions != null) {
+            result += " Dim: " + dimensions;
+        }
+        if (weight != null) {
+            result += " Wt: " + weight;
+        }
+        if (license != null) {
+            result += " License: " + license;
+        }
+        if (service != null) {
+            result += " Service: " + service;
+        }
+        return result;
     }
 
     @Override
@@ -36,13 +95,8 @@ public class Product extends BaseEntity implements Identifiable, Billable {
         return price;
     }
 
-    public static int getCounter() {
-        return counter;
-    }
-
     @Override
-    public String toString() {
-        return "Product[" + id + ", " + name + ", " + price + "]";
+    public String getId() {
+        return id;
     }
-
 }
