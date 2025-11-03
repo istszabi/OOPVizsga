@@ -76,6 +76,10 @@ public class Order extends BaseEntity {
         }
     }
 
+    public String getStatus() {
+        return status;
+    }
+
     
     public Customer getCustomer() {
         return customer;

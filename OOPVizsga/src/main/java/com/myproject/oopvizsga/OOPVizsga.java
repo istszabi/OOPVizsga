@@ -9,6 +9,7 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 import org.json.JSONObject;
 import org.json.JSONArray;
+import com.myproject.oopvizsga.ReportWriter;
 
 /**
  *
@@ -106,10 +107,11 @@ public class OOPVizsga {
     order.computeTotal()
 ));
 }
-
-
+            
+ReportWriter.writeReport(orders, "report.txt");
         } catch (Exception e) {
             e.printStackTrace();
         }
+        
     }
 }

@@ -1,0 +1,34 @@
+Order ID: ORD-2025-1102-00123
+Customer: Customer[CUST-9912, Ana Ionescu, ana.ionescu@example.com, GOLD]
+Status: PAID
+Items:
+  - DIGITAL Java 6 OOP Basics (Video) x1 $79.9 (LineTotal: 79.9) | Line Total: $79,90
+  - PHYSICAL Clean Code, RO x2 $38.5 (LineTotal: 77.0) | Line Total: $77,00
+  - SERVICE Extended Warranty 12m x1 $14.99 (LineTotal: 14.99) | Line Total: $14,99
+Order Total (with taxes & discounts): $203,33
+-------------------------------------------------
+Order ID: ORD-2025-1102-00124
+Customer: Customer[CUST-7741, Mihai Popescu, mihai.popescu@example.com, SILVER]
+Status: PROCESSING
+Items:
+  - PHYSICAL Logitech MX Master 3 Mouse x1 $99.0 (LineTotal: 99.0) | Line Total: $99,00
+  - PHYSICAL Keychron K6 Mechanical Keyboard x1 $89.9 (LineTotal: 89.9) | Line Total: $89,90
+  - SERVICE Home Office Setup Service x1 $29.99 (LineTotal: 29.99) | Line Total: $29,99
+Order Total (with taxes & discounts): $264,86
+-------------------------------------------------
+Order ID: ORD-2025-1102-00125
+Customer: Customer[CUST-8820, Elena Tudor, elena.tudor@example.com, PLATINUM]
+Status: SHIPPED
+Items:
+  - PHYSICAL Dell XPS 13 Laptop x1 $1299.0 (LineTotal: 1299.0) | Line Total: $1299,00
+  - DIGITAL Microsoft Office 365 License (1 year) x1 $69.9 (LineTotal: 69.9) | Line Total: $69,90
+Order Total (with taxes & discounts): $1656,37
+-------------------------------------------------
+Order ID: ORD-2025-1102-00126
+Customer: Customer[unknown, Invalid , not-an-email, WOOD]
+Status: UNKNOWN
+Items:
+  - PHYSICAL Unnamed Product x-5 $-10.0 (LineTotal: 50.0) | Line Total: $50,00
+  - SERVICE Broken Service x1 $0.0 (LineTotal: 0.0) | Line Total: $0,00
+Order Total (with taxes & discounts): $60,50
+-------------------------------------------------
