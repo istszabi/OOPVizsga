@@ -68,8 +68,14 @@ public class Product extends BaseEntity implements Identifiable, Billable {
 
     @Override
     public String toString() {
-        return type + " " + name + " x" + qty + " $" + price + " (LineTotal: " + getLineTotal() + ")";
+    String lineTotalStr = String.format("%.2f", getLineTotal());
+    if (!isValid()) {
+        return type + " " + name + " x" + qty + " $" + price 
+               + " (LineTotal: " + lineTotalStr + ") [INVALID DATA]";
     }
+    return type + " " + name + " x" + qty + " $" + price 
+           + " (LineTotal: " + lineTotalStr + ")";
+}
 
     @Override
     public double getPrice() {
@@ -80,4 +86,10 @@ public class Product extends BaseEntity implements Identifiable, Billable {
     public String getId() {
         return id;
     }
+    public boolean isValid() {
+    return sku != null && !sku.isEmpty()
+        && name != null && !name.isEmpty()
+        && qty > 0
+        && price > 0.0;
+}
 }
