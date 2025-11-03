@@ -45,49 +45,30 @@ public class Product extends BaseEntity implements Identifiable, Billable {
         discounts.add(discount);
     }
 
-    // Set optional fields
-    public void setDimensions(Dimensions dimensions) {
-        this.dimensions = dimensions;
+    public double getLineTotal() {
+        double total = price * qty;
+        for (Discount discount : discounts) {
+            total -= discount.getAmount();
+        }
+        return Math.max(total, 0);
     }
 
-    public void setWeight(Weight weight) {
-        this.weight = weight;
+    public boolean isPhysical() {
+        return type.equalsIgnoreCase("PHYSICAL");
+    }
+    
+    public String getName() {
+        return name;
     }
 
-    public void setLicense(License license) {
-        this.license = license;
-    }
-
-    public void setService(ServiceDetails service) {
-        this.service = service;
-    }
-
-    // Business key for equals
     @Override
     public String businessKey() {
         return sku;
     }
 
-    // To string prints type-specific info
     @Override
     public String toString() {
-        String result = type + " " + name + " x" + qty + " [" + sku + "] $" + price;
-        if (!discounts.isEmpty()) {
-            result += " Discounts: " + discounts;
-        }
-        if (dimensions != null) {
-            result += " Dim: " + dimensions;
-        }
-        if (weight != null) {
-            result += " Wt: " + weight;
-        }
-        if (license != null) {
-            result += " License: " + license;
-        }
-        if (service != null) {
-            result += " Service: " + service;
-        }
-        return result;
+        return type + " " + name + " x" + qty + " $" + price + " (LineTotal: " + getLineTotal() + ")";
     }
 
     @Override

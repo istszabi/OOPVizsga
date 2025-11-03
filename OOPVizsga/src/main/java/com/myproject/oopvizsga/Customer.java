@@ -34,6 +34,20 @@ public class Customer extends BaseEntity implements Identifiable {
         return addresses;
     }
 
+    public String getLoyaltyTier() {
+        return loyaltyTier;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+    
+    
+
     @Override
     public String businessKey() {
         return id;

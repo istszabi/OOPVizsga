@@ -21,5 +21,11 @@ public class Discount {
     public String toString() {
         return code + "(-" + amount + ")";
     }
+
+    public double getAmount() {
+        return amount;
+    }
+    
+    
     
 }
